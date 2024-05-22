@@ -30,7 +30,6 @@ public class Gyrobab {
                 case 3:
                     Utilisateur utilisateur = Utilisateur.creerCompte(scanner, 1);
                     utilisateur.afficherProfil();
-
                     break;
                 case 4:
                     System.out.println("Merci d'avoir utilisé notre système. À bientôt!");
