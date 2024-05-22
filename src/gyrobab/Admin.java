@@ -15,13 +15,11 @@ public class Admin {
 
         switch (choix) {
             case 1:
-                // Implémenter la gestion des utilisateurs
                 break;
             case 2:
-                // Implémenter la gestion des gyropodes
+
                 break;
             case 3:
-                // Implémenter la visualisation des statistiques
                 break;
             case 4:
                 return;

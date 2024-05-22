@@ -3,8 +3,8 @@ package gyrobab;
 import java.util.Scanner;
 
 public class Authentification {
-    private String emailEnregistre = "admin@example.com";
-    private String motDePasseEnregistre = "admin123";
+    private String emailEnregistre = "test@bts.sio";
+    private String motDePasseEnregistre = "sio";
 
     public boolean login(Scanner scanner) {
         System.out.print("Entrez votre email: ");

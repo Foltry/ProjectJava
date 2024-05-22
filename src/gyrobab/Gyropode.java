@@ -16,9 +16,11 @@ public class Gyropode {
         System.out.println("Couleur: " + couleur);
         System.out.println("Disponibilité: " + (estDisponible ? "Disponible" : "Non disponible"));
     }
-
+    public boolean getDisponible(){
+        return this.estDisponible;
+    }
     public String getNumeroSerie() {
-        return numeroSerie;
+        return this.numeroSerie;
     }
 
     public void setCouleur(String couleur) {

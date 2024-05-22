@@ -2,6 +2,7 @@ package gyrobab;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class Utilisateur {
     private int id;
@@ -20,7 +21,7 @@ public class Utilisateur {
         this.reservations = new ArrayList<>();
     }
 
-    // Getters
+    // Getters and Setters
     public int getId() { return this.id; }
     public String getNom() { return this.nom; }
     public String getPrenom() { return this.prenom; }
@@ -28,7 +29,6 @@ public class Utilisateur {
     public String getMotDePasse() { return this.motDePasse; }
     public List<Reservation> getReservations() { return this.reservations; }
 
-    // Setters
     public void setId(int id) { this.id = id; }
     public void setNom(String nom) { this.nom = nom; }
     public void setPrenom(String prenom) { this.prenom = prenom; }
@@ -55,5 +55,20 @@ public class Utilisateur {
                 r.afficherDetails();
             }
         }
+    }
+
+    // Static method to create a user account
+    public static Utilisateur creerCompte(Scanner scanner, int userId) {
+        System.out.println("Création d'un nouveau compte utilisateur.");
+        System.out.print("Entrez votre nom: ");
+        String nom = scanner.nextLine();
+        System.out.print("Entrez votre prénom: ");
+        String prenom = scanner.nextLine();
+        System.out.print("Entrez votre email: ");
+        String email = scanner.nextLine();
+        System.out.print("Créez un mot de passe: ");
+        String motDePasse = scanner.nextLine();
+
+        return new Utilisateur(userId, nom, prenom, email, motDePasse);
     }
 }

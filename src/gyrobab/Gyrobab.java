@@ -1,9 +1,11 @@
 package gyrobab;
 import java.util.Scanner;
 
-public class MainApplication {
+public class Gyrobab {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
+        Utilisateur utilisateur = Utilisateur.creerCompte(scanner, 1); // Assume userId as 1 for demonstration
+        utilisateur.afficherProfil();
         Authentification auth = new Authentification();
         Admin admin = new Admin();
         Gestionnaire gestionnaire = new Gestionnaire();
