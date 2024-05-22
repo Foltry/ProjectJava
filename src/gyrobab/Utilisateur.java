@@ -5,6 +5,8 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Utilisateur {
+    private static List<Utilisateur> tousLesUtilisateurs = new ArrayList<>();
+
     private int id;
     private String nom;
     private String prenom;
@@ -21,17 +23,23 @@ public class Utilisateur {
         this.reservations = new ArrayList<>();
     }
 
-    // Getters and Setters
-    public int getId() { return this.id; }
-    public String getNom() { return this.nom; }
-    public String getPrenom() { return this.prenom; }
-    public String getEmail() { return this.email; }
-    public String getMotDePasse() { return this.motDePasse; }
-    public List<Reservation> getReservations() { return this.reservations; }
+    // Getters
+    public int getId() { return id; }
+    public String getNom() { return nom; }
+    public String getPrenom() { return prenom; }
+    public String getEmail() { return email; }
+    public String getMotDePasse() { return motDePasse; }
+    public List<Reservation> getReservations() { return reservations; }
+
+    // Setters
+    public void setId(int id) { this.id = id; }
+    public void setNom(String nom) { this.nom = nom; }
+    public void setPrenom(String prenom) { this.prenom = prenom; }
+    public void setEmail(String email) { this.email = email; }
+    public void setMotDePasse(String motDePasse) { this.motDePasse = motDePasse; }
 
     public void afficherProfil() {
-        System.out.println("\nProfil de l'Utilisateur:");
-        System.out.println("ID: " + id);
+        System.out.println("Profil de l'Utilisateur:");
         System.out.println("Nom: " + nom);
         System.out.println("Prénom: " + prenom);
         System.out.println("Email: " + email);
@@ -45,10 +53,26 @@ public class Utilisateur {
         String prenom = scanner.nextLine();
         System.out.print("Entrez votre email: ");
         String email = scanner.nextLine();
+        if (emailExiste(email)) {
+            System.out.println("Un compte avec cet email existe déjà.");
+            return null;
+        }
         System.out.print("Créez un mot de passe: ");
         String motDePasse = scanner.nextLine();
 
         Utilisateur nouvelUtilisateur = new Utilisateur(userId, nom, prenom, email, motDePasse);
+        tousLesUtilisateurs.add(nouvelUtilisateur);
         return nouvelUtilisateur;
+    }
+    public static List<Utilisateur> getTousLesUtilisateurs() {
+        return tousLesUtilisateurs;
+    }
+    public static boolean emailExiste(String email) {
+        for (Utilisateur utilisateur : tousLesUtilisateurs) {
+            if (utilisateur.getEmail().equalsIgnoreCase(email)) {
+                return true;
+            }
+        }
+        return false;
     }
 }

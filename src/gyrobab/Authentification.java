@@ -3,8 +3,6 @@ package gyrobab;
 import java.util.Scanner;
 
 public class Authentification {
-    private String emailEnregistre = "test@bts.sio";
-    private String motDePasseEnregistre = "sio";
 
     public boolean login(Scanner scanner) {
         System.out.print("Entrez votre email: ");
@@ -12,12 +10,22 @@ public class Authentification {
         System.out.print("Entrez votre mot de passe: ");
         String motDePasse = scanner.nextLine();
 
-        if (email.equals(emailEnregistre) && motDePasse.equals(motDePasseEnregistre)) {
+        Utilisateur utilisateur = trouverUtilisateurParEmail(email);
+        if (utilisateur != null && utilisateur.getMotDePasse().equals(motDePasse)) {
             System.out.println("Connexion réussie!");
             return true;
         } else {
             System.out.println("Échec de la connexion. Veuillez vérifier vos identifiants.");
             return false;
         }
+    }
+
+    private Utilisateur trouverUtilisateurParEmail(String email) {
+        for (Utilisateur utilisateur : Utilisateur.getTousLesUtilisateurs()) {
+            if (utilisateur.getEmail().equalsIgnoreCase(email)) {
+                return utilisateur;
+            }
+        }
+        return null;
     }
 }

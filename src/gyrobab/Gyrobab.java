@@ -37,6 +37,7 @@ public class Gyrobab {
                     break;
                 default:
                     System.out.println("Option invalide. Veuillez réessayer.");
+                    continue;
             }
         }
     }
