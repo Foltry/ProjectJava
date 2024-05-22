@@ -4,8 +4,6 @@ import java.util.Scanner;
 public class Gyrobab {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        Utilisateur utilisateur = Utilisateur.creerCompte(scanner, 1); // Assume userId as 1 for demonstration
-        utilisateur.afficherProfil();
         Authentification auth = new Authentification();
         Admin admin = new Admin();
         Gestionnaire gestionnaire = new Gestionnaire();
@@ -16,7 +14,8 @@ public class Gyrobab {
             System.out.println("\nChoisissez une option:");
             System.out.println("1. Connexion utilisateur");
             System.out.println("2. Connexion administrateur");
-            System.out.println("3. Quitter");
+            System.out.println("3. Créer un compte");
+            System.out.println("4. Quitter");
             System.out.print("Votre choix: ");
             int choix = scanner.nextInt();
             scanner.nextLine();
@@ -29,6 +28,11 @@ public class Gyrobab {
                     admin.menu(scanner);
                     break;
                 case 3:
+                    Utilisateur utilisateur = Utilisateur.creerCompte(scanner, 1);
+                    utilisateur.afficherProfil();
+
+                    break;
+                case 4:
                     System.out.println("Merci d'avoir utilisé notre système. À bientôt!");
                     System.exit(0);
                     break;

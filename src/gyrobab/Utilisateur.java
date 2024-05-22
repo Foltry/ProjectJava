@@ -29,37 +29,16 @@ public class Utilisateur {
     public String getMotDePasse() { return this.motDePasse; }
     public List<Reservation> getReservations() { return this.reservations; }
 
-    public void setId(int id) { this.id = id; }
-    public void setNom(String nom) { this.nom = nom; }
-    public void setPrenom(String prenom) { this.prenom = prenom; }
-    public void setEmail(String email) { this.email = email; }
-    public void setMotDePasse(String motDePasse) { this.motDePasse = motDePasse; }
-
     public void afficherProfil() {
-        System.out.println("Profil de l'Utilisateur:");
+        System.out.println("\nProfil de l'Utilisateur:");
+        System.out.println("ID: " + id);
         System.out.println("Nom: " + nom);
         System.out.println("Prénom: " + prenom);
         System.out.println("Email: " + email);
         System.out.println("Nombre de réservations: " + reservations.size());
     }
 
-    public void ajouterReservation(Reservation reservation) {
-        reservations.add(reservation);
-    }
-
-    public void afficherReservations() {
-        if (reservations.isEmpty()) {
-            System.out.println("Aucune réservation.");
-        } else {
-            for (Reservation r : reservations) {
-                r.afficherDetails();
-            }
-        }
-    }
-
-    // Static method to create a user account
     public static Utilisateur creerCompte(Scanner scanner, int userId) {
-        System.out.println("Création d'un nouveau compte utilisateur.");
         System.out.print("Entrez votre nom: ");
         String nom = scanner.nextLine();
         System.out.print("Entrez votre prénom: ");
@@ -69,6 +48,7 @@ public class Utilisateur {
         System.out.print("Créez un mot de passe: ");
         String motDePasse = scanner.nextLine();
 
-        return new Utilisateur(userId, nom, prenom, email, motDePasse);
+        Utilisateur nouvelUtilisateur = new Utilisateur(userId, nom, prenom, email, motDePasse);
+        return nouvelUtilisateur;
     }
 }
